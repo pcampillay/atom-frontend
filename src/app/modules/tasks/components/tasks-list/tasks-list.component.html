@@ -1,0 +1,40 @@
+<div class="tasks-list-container">
+  <div class="task-header">
+    <h1 class="mat-headline-5">Lista de Tareas</h1>
+    <button mat-raised-button color="primary" (click)="onAddTask()">
+      <mat-icon>add</mat-icon>
+      Nueva Tarea
+    </button>
+  </div>
+
+  <!-- Indicador de carga -->
+  <div class="loading-container" *ngIf="isLoading && !sortedTasks.length">
+    <mat-spinner diameter="40"></mat-spinner>
+    <p>Cargando tareas...</p>
+  </div>
+
+  <!-- Mensaje de no hay tareas -->
+  <div class="no-tasks" *ngIf="!isLoading && tasks.length === 0">
+    <mat-icon>assignment</mat-icon>
+    <p>No hay tareas disponibles</p>
+  </div>
+
+  <!-- Virtual Scroll para listas grandes -->
+  <cdk-virtual-scroll-viewport *ngIf="!isLoading && sortedTasks.length > 0" [itemSize]="itemSize"
+    class="virtual-scroll-viewport" (scrolledIndexChange)="onScrolledIndexChange($event)">
+
+    <div class="tasks-grid">
+      <ng-container *cdkVirtualFor="let task of sortedTasks; trackBy: trackByTaskId">
+        <app-task-card [task]="task" (statusChanged)="onTaskStatusChanged($event)" (editClicked)="onTaskEdit($event)"
+          (deleteClicked)="onTaskDelete($event)">
+        </app-task-card>
+      </ng-container>
+    </div>
+
+    <!-- Indicador de carga para scroll infinito -->
+    <div class="loading-more" *ngIf="isLoading">
+      <mat-spinner diameter="30"></mat-spinner>
+      <span>Cargando más tareas...</span>
+    </div>
+  </cdk-virtual-scroll-viewport>
+</div>

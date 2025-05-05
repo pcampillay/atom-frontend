@@ -1,0 +1,92 @@
+.task-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+  background-color: var(--card-background);
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  mat-card-header {
+    padding-bottom: 10px;
+  }
+
+  mat-card-content {
+    .description-container {
+      background-color: var(--description-background, rgba(0, 0, 0, 0.10));
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 15px;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      min-height: calc(4 * 1.5em); // Mínimo 4 líneas
+      max-height: calc(4 * 1.5em); // Máximo 5 líneas
+      overflow: hidden; // Oculta el contenido excedente
+      position: relative; // Para posicionar elementos dentro
+
+      p {
+        margin: 0;
+        line-height: 1.5; // Asegura un line-height consistente
+        display: -webkit-box;
+        -webkit-line-clamp: 5; // Limita a 5 líneas
+        -webkit-box-orient: vertical;
+        overflow: hidden; // Oculta el texto excedente
+        word-break: break-word; // Permite el quiebre de palabras largas
+      }
+
+      // Añadir un fade-out en la parte inferior para indicar truncamiento
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1.5em;
+        background: linear-gradient(to bottom, transparent, var(--description-background, rgba(0, 0, 0, 0.10)));
+        pointer-events: none;
+      }
+    }
+
+    .task-status {
+      margin-top: 15px;
+      // Eliminar el borde superior
+      // border-top: 1px solid #eee;
+    }
+  }
+}
+
+.card-footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .creation-date {
+    font-size: 0.8rem;
+    color: var(--text-muted, #757575);
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+
+    .date-icon {
+      font-size: 16px;
+      height: 16px;
+      width: 16px;
+      margin-right: 4px;
+    }
+  }
+
+  .action-buttons {
+    display: flex;
+  }
+}
+
+.completed-title {
+  text-decoration: line-through;
+  color: #9e9e9e;
+}
+
+.completed-text {
+  text-decoration: line-through;
+  color: #9e9e9e;
+}

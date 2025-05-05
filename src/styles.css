@@ -1,0 +1,48 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Estilos base para el documento */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Variables de tema claro (predeterminado) */
+:root {
+  --background-color: #fff8f5;
+  --card-background: #ffffff;
+  --text-color: #231a11;
+  --border-color: rgba(0, 0, 0, 0.12);
+  --primary-color: #8b5000;
+  --accent-color: #8b5000;
+}
+
+/* Variables de tema oscuro */
+.dark-theme {
+  --background-color: #1a120a;
+  --card-background: #392e25;
+  --text-color: #f1dfd1;
+  --border-color: rgba(255, 255, 255, 0.12);
+  --primary-color: #ffb870;
+  --accent-color: #ffb870;
+}
+
+/* Aplicación de las variables CSS */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Asegurar que las tarjetas de Material también respetan nuestro tema */
+.mat-mdc-card {
+  background-color: var(--card-background) !important;
+  color: var(--text-color) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Estilos específicos para mejorar la visibilidad del botón toggle en modo oscuro */
+.dark-theme .theme-toggle-container button {
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+}

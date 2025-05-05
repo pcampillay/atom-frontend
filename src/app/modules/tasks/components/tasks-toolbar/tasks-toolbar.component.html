@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  <div class="toolbar-content">
+    <div class="app-title-container">
+      <span class="app-title">Test ATOM</span>
+    </div>
+    <div class="title-container">
+      <span class="title">Mis Tareas</span>
+      <span class="user-email">{{ userEmail }}</span>
+    </div>
+    <div class="logout-button-container">
+      <button mat-mini-fab color="primary" (click)="onLogout()" matTooltip="Cerrar sesión">
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-toolbar>

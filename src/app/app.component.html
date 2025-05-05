@@ -1,0 +1,9 @@
+<div class="app-container" [attr.aria-hidden]="null">
+  <div class="theme-toggle-container">
+    <button mat-mini-fab color="primary" (click)="toggleTheme()"
+      [matTooltip]="isDarkTheme ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'">
+      <mat-icon>{{ isDarkTheme ? 'light_mode' : 'dark_mode' }}</mat-icon>
+    </button>
+  </div>
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,10 @@
+<div class="tasks-container">
+  <app-tasks-toolbar [userEmail]="userEmail" (logoutClicked)="logout()">
+  </app-tasks-toolbar>
+
+  <div class="content">
+    <app-tasks-list [tasks]="tasks" [isLoading]="isLoading" (addClicked)="addTask()"
+      (statusChanged)="toggleTaskStatus($event)" (editClicked)="editTask($event)" (deleteClicked)="deleteTask($event)">
+    </app-tasks-list>
+  </div>
+</div>

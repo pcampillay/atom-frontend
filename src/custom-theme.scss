@@ -1,0 +1,47 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+@use './_theme-colors.scss' as theme;
+
+// Tema claro (predeterminado)
+html {
+  @include mat.theme((color: (theme-type: light,
+        primary: theme.$primary-palette,
+        tertiary: theme.$tertiary-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    ));
+
+  // Variables CSS para tema claro
+  & {
+    --background-color: #fff8f5; // Tomado de las definiciones del tema neutro
+    --text-color: rgba(0, 0, 0, 0.87);
+    --card-background: #ffffff;
+  }
+}
+
+// Tema oscuro
+.dark-theme {
+  @include mat.theme((color: (theme-type: dark,
+        primary: theme.$primary-palette,
+        tertiary: theme.$tertiary-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    ));
+
+  // Variables CSS para tema oscuro
+  & {
+    --background-color: #1a120a; // Tomado de las definiciones del tema neutro
+    --text-color: #ffffff;
+    --card-background: #392e25;
+  }
+}
+
+// Aplicar estilos de alto contraste cuando el usuario tiene configurado este modo
+@media (forced-colors: active) {
+  html {
+    @include theme.high-contrast-overrides(color-scheme);
+  }
+}

@@ -1,0 +1,31 @@
+<mat-card class="task-card">
+  <mat-card-header>
+    <mat-card-title [class.completed-title]="task.completed">{{ task.title }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="description-container" *ngIf="task.description">
+      <p [class.completed-text]="task.completed">{{ task.description }}</p>
+    </div>
+    <div class="task-status">
+      <mat-checkbox [(ngModel)]="task.completed" (change)="onStatusChanged()" color="primary">
+        {{ task.completed ? 'Completada' : 'Pendiente' }}
+      </mat-checkbox>
+    </div>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <div class="card-footer">
+      <div class="creation-date" *ngIf="task.created_at">
+        <mat-icon class="date-icon">event</mat-icon>
+        {{ formatDate(task.created_at) }}
+      </div>
+      <div class="action-buttons">
+        <button mat-icon-button color="primary" (click)="onEdit()" matTooltip="Editar tarea">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="onDelete()" matTooltip="Eliminar tarea">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-card-actions>
+</mat-card>

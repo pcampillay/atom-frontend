@@ -1,0 +1,20 @@
+.app-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+.theme-toggle-container {
+  position: fixed;
+  top: 12px;
+  right: 20px;
+  z-index: 1000;
+}
+
+button[mat-mini-fab] {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+button[mat-mini-fab]:hover {
+  transform: scale(1.1);
+}

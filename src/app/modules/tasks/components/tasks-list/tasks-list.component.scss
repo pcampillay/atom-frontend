@@ -1,0 +1,124 @@
+.tasks-list-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Estilos para el contenedor de carga */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background-color: var(--card-background);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+
+  p {
+    margin-top: 16px;
+    font-size: 16px;
+    color: #757575;
+  }
+}
+
+.no-tasks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background-color: var(--card-background);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  mat-icon {
+    font-size: 48px;
+    height: 48px;
+    width: 48px;
+    margin-bottom: 16px;
+    color: #757575;
+  }
+
+  p {
+    font-size: 18px;
+    color: #757575;
+  }
+}
+
+/* Estilos para el viewport de scroll virtual */
+.virtual-scroll-viewport {
+  height: calc(100vh - 180px);
+  width: 100%;
+  border-radius: 8px;
+  background-color: var(--background);
+
+  // Estilos para el scrollbar
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
+.tasks-grid {
+  display: grid;
+  gap: 20px;
+  min-height: 200px;
+  padding: 10px;
+
+  // Ajustes responsive para el grid
+  // Mobile: 1 columna
+  grid-template-columns: 1fr;
+
+  // Tablet: 2 columnas
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  // Desktop: 3 columnas o más
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  // Pantallas muy grandes: 4 columnas
+  @media (min-width: 1600px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+// Indicador de carga para scroll infinito
+.loading-more {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  margin-top: 10px;
+
+  span {
+    margin-left: 16px;
+    color: var(--text-muted, #757575);
+  }
+}
